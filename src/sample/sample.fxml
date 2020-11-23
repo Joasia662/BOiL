@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="136.0" layoutY="101.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff;" />
+      <TextField layoutX="136.0" layoutY="145.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff;" />
+      <TextField layoutX="137.0" layoutY="192.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff;" />
+      <TextField layoutX="211.0" layoutY="58.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff;" />
+      <TextField layoutX="281.0" layoutY="58.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff;" />
+      <Label layoutX="129.0" layoutY="74.0" text="Podaż" />
+      <Label layoutX="202.0" layoutY="14.0" text="Popyt" />
+      <Label layoutX="110.0" layoutY="106.0" text="D1" />
+      <Label layoutX="110.0" layoutY="150.0" text="D2" />
+      <Label layoutX="110.0" layoutY="197.0" text="D3" />
+      <Label layoutX="211.0" layoutY="31.0" text="O1" />
+      <Label layoutX="281.0" layoutY="31.0" text="O2" />
+      <TextField layoutX="211.0" layoutY="101.0" prefHeight="31.0" prefWidth="66.0" />
+      <TextField layoutX="281.0" layoutY="101.0" prefHeight="31.0" prefWidth="66.0" />
+      <TextField layoutX="211.0" layoutY="145.0" prefHeight="31.0" prefWidth="66.0" />
+      <TextField layoutX="281.0" layoutY="145.0" prefHeight="31.0" prefWidth="66.0" />
+      <TextField layoutX="211.0" layoutY="192.0" prefHeight="31.0" prefWidth="66.0" />
+      <TextField layoutX="281.0" layoutY="192.0" prefHeight="31.0" prefWidth="66.0" />
+      <Label layoutX="360.0" layoutY="63.0" text="Cena zakupu" />
+      <Label layoutX="95.0" layoutY="245.0" text="Cena sprzedaży" />
+      <TextField layoutX="353.0" layoutY="101.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #33cc33;" />
+      <TextField layoutX="353.0" layoutY="145.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #33cc33;" />
+      <TextField layoutX="353.0" layoutY="192.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #33cc33;" />
+      <TextField layoutX="210.0" layoutY="239.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #ff0000;" />
+      <TextField layoutX="281.0" layoutY="239.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #ff0000;" />
+   </children>
+</AnchorPane>
