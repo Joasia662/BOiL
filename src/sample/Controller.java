@@ -1,14 +1,67 @@
 package sample;
 
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import models.Recipient;
 import models.Supplier;
 
-public class Controller {
+public class Controller{
 
+    @FXML private TextField rec0;
+    @FXML private TextField rec1;
+
+    @FXML private TextField sup0;
+    @FXML private TextField sup1;
+    @FXML private TextField sup2;
+
+    @FXML private TextField purchasePrice0;
+    @FXML private TextField purchasePrice1;
+    @FXML private TextField purchasePrice2;
+
+    @FXML private TextField sellingPrice0;
+    @FXML private TextField sellingPrice1;
+
+    @FXML private TextField costOfTransport00;
+    @FXML private TextField costOfTransport01;
+    @FXML private TextField costOfTransport10;
+    @FXML private TextField costOfTransport11;
+    @FXML private TextField costOfTransport20;
+    @FXML private TextField costOfTransport21;
+
+    private TransportIssueAlgorithm transportIssueAlgorithm = new TransportIssueAlgorithm();
     Supplier[]  suppliers = new Supplier[3];
     Recipient[] recipients = new Recipient[2];
-    Integer[][] costOfTransport = new Integer[2][3];
+    int[][] costOfTransport = new int[3][2];
 
+    public void handleConfirmButton() {
+        for (int i = 0; i < suppliers.length; i++) {
+            suppliers[i] = new Supplier();
+        }
+        for (int i = 0; i < recipients.length; i++) {
+            recipients[i] = new Recipient();
+        }
+        this.suppliers[0].setSupply(Integer.parseInt(this.sup0.getText()));
+        this.suppliers[0].setPurchasePrice(Integer.parseInt(this.purchasePrice0.getText()));
+        this.suppliers[1].setSupply(Integer.parseInt(this.sup1.getText()));
+        this.suppliers[1].setPurchasePrice(Integer.parseInt(this.purchasePrice1.getText()));
+        this.suppliers[2].setSupply(Integer.parseInt(this.sup2.getText()));
+        this.suppliers[2].setPurchasePrice(Integer.parseInt(this.purchasePrice2.getText()));
+
+        this.recipients[0].setDemand(Integer.parseInt(this.rec0.getText()));
+        this.recipients[0].setSellingPrice(Integer.parseInt(this.sellingPrice0.getText()));
+        this.recipients[1].setDemand(Integer.parseInt(this.rec1.getText()));
+        this.recipients[1].setSellingPrice(Integer.parseInt(this.sellingPrice1.getText()));
+
+        this.costOfTransport[0][0] = Integer.parseInt(this.costOfTransport00.getText());
+        this.costOfTransport[0][1] = Integer.parseInt(this.costOfTransport01.getText());
+        this.costOfTransport[1][0] = Integer.parseInt(this.costOfTransport10.getText());
+        this.costOfTransport[1][1] = Integer.parseInt(this.costOfTransport11.getText());
+        this.costOfTransport[2][0] = Integer.parseInt(this.costOfTransport20.getText());
+        this.costOfTransport[2][1] = Integer.parseInt(this.costOfTransport21.getText());
+    }
+
+//    Integer [] unitProfit = transportIssueAlgorithm.calculateUnitProfit(this.recipients,this.suppliers, this.costOfTransport);
     // TRANSCRIPTION
     // costOfTransport[0][0] --->  suppliers[0] and recipients[0]
     // costOfTransport[0][1] --->  suppliers[0] and recipients[1]
@@ -22,16 +75,14 @@ public class Controller {
         z = c – kz- kt
     */
 
-    Integer [] unitProfit = calculateUnitProfit(this.recipients,this.suppliers);
-
-    public Integer[] calculateUnitProfit( Recipient[] rec, Supplier[]  sup){
+    public Integer[] calculateUnitProfit(Recipient[] rec, Supplier[]  sup){
         Integer [] profit = new Integer[ rec.length*sup.length];
         int indexUnit =0;
 
-        for (int indexRec =0; indexRec< rec.length; indexRec ++)
+        for (int indexRec = 0; indexRec < rec.length; indexRec++)
         {
-            for ( int indexSup =0; indexSup < sup.length; indexSup++){
-                profit[indexUnit] = rec[indexRec].sellingPrice - this.suppliers[indexSup].purchasePrice - this.costOfTransport[indexSup][indexRec];
+            for (int indexSup = 0; indexSup < sup.length; indexSup++){
+                profit[indexUnit] = rec[indexRec].getSellingPrice() - this.suppliers[indexSup].getPurchasePrice() - this.costOfTransport[indexSup][indexRec];
                 indexUnit++;
             }
         }
