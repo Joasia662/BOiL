@@ -35,30 +35,25 @@ public class Controller{
     int[][] costOfTransport = new int[3][2];
 
     public void handleConfirmButton() {
-        for (int i = 0; i < suppliers.length; i++) {
-            suppliers[i] = new Supplier();
-        }
-        for (int i = 0; i < recipients.length; i++) {
-            recipients[i] = new Recipient();
-        }
-        this.suppliers[0].setSupply(Integer.parseInt(this.sup0.getText()));
-        this.suppliers[0].setPurchasePrice(Integer.parseInt(this.purchasePrice0.getText()));
-        this.suppliers[1].setSupply(Integer.parseInt(this.sup1.getText()));
-        this.suppliers[1].setPurchasePrice(Integer.parseInt(this.purchasePrice1.getText()));
-        this.suppliers[2].setSupply(Integer.parseInt(this.sup2.getText()));
-        this.suppliers[2].setPurchasePrice(Integer.parseInt(this.purchasePrice2.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[0].setPurchasePrice(Integer.parseInt(this.purchasePrice0.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[1].setSupply(Integer.parseInt(this.sup1.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[1].setPurchasePrice(Integer.parseInt(this.purchasePrice1.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[2].setSupply(Integer.parseInt(this.sup2.getText()));
+        this.transportIssueAlgorithm.getSuppliers()[2].setPurchasePrice(Integer.parseInt(this.purchasePrice2.getText()));
 
-        this.recipients[0].setDemand(Integer.parseInt(this.rec0.getText()));
-        this.recipients[0].setSellingPrice(Integer.parseInt(this.sellingPrice0.getText()));
-        this.recipients[1].setDemand(Integer.parseInt(this.rec1.getText()));
-        this.recipients[1].setSellingPrice(Integer.parseInt(this.sellingPrice1.getText()));
+        this.transportIssueAlgorithm.getRecipients()[0].setDemand(Integer.parseInt(this.rec0.getText()));
+        this.transportIssueAlgorithm.getRecipients()[0].setSellingPrice(Integer.parseInt(this.sellingPrice0.getText()));
+        this.transportIssueAlgorithm.getRecipients()[1].setDemand(Integer.parseInt(this.rec1.getText()));
+        this.transportIssueAlgorithm.getRecipients()[1].setSellingPrice(Integer.parseInt(this.sellingPrice1.getText()));
 
-        this.costOfTransport[0][0] = Integer.parseInt(this.costOfTransport00.getText());
-        this.costOfTransport[0][1] = Integer.parseInt(this.costOfTransport01.getText());
-        this.costOfTransport[1][0] = Integer.parseInt(this.costOfTransport10.getText());
-        this.costOfTransport[1][1] = Integer.parseInt(this.costOfTransport11.getText());
-        this.costOfTransport[2][0] = Integer.parseInt(this.costOfTransport20.getText());
-        this.costOfTransport[2][1] = Integer.parseInt(this.costOfTransport21.getText());
+        this.transportIssueAlgorithm.getCostOfTransport()[0][0] = Integer.parseInt(this.costOfTransport00.getText());
+        this.transportIssueAlgorithm.getCostOfTransport()[0][1] = Integer.parseInt(this.costOfTransport01.getText());
+        this.transportIssueAlgorithm.getCostOfTransport()[1][0] = Integer.parseInt(this.costOfTransport10.getText());
+        this.transportIssueAlgorithm.getCostOfTransport()[1][1] = Integer.parseInt(this.costOfTransport11.getText());
+        this.transportIssueAlgorithm.getCostOfTransport()[2][0] = Integer.parseInt(this.costOfTransport20.getText());
+        this.transportIssueAlgorithm.getCostOfTransport()[2][1] = Integer.parseInt(this.costOfTransport21.getText());
     }
 
 //    Integer [] unitProfit = transportIssueAlgorithm.calculateUnitProfit(this.recipients,this.suppliers, this.costOfTransport);
