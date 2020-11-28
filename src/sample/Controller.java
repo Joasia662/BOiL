@@ -29,10 +29,12 @@ public class Controller{
     @FXML private TextField costOfTransport20;
     @FXML private TextField costOfTransport21;
 
+    @FXML private TextField blockedRow;
+    @FXML private TextField blockedCol;
+
+    @FXML private TextField result;
+
     private TransportIssueAlgorithm transportIssueAlgorithm = new TransportIssueAlgorithm();
-    Supplier[]  suppliers = new Supplier[3];
-    Recipient[] recipients = new Recipient[2];
-    int[][] costOfTransport = new int[3][2];
 
     public void handleConfirmButton() {
         this.transportIssueAlgorithm.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
@@ -48,45 +50,21 @@ public class Controller{
         this.transportIssueAlgorithm.getRecipients()[1].setDemand(Integer.parseInt(this.rec1.getText()));
         this.transportIssueAlgorithm.getRecipients()[1].setSellingPrice(Integer.parseInt(this.sellingPrice1.getText()));
 
-        this.transportIssueAlgorithm.getCostOfTransport()[0][0] = Integer.parseInt(this.costOfTransport00.getText());
-        this.transportIssueAlgorithm.getCostOfTransport()[0][1] = Integer.parseInt(this.costOfTransport01.getText());
-        this.transportIssueAlgorithm.getCostOfTransport()[1][0] = Integer.parseInt(this.costOfTransport10.getText());
-        this.transportIssueAlgorithm.getCostOfTransport()[1][1] = Integer.parseInt(this.costOfTransport11.getText());
-        this.transportIssueAlgorithm.getCostOfTransport()[2][0] = Integer.parseInt(this.costOfTransport20.getText());
-        this.transportIssueAlgorithm.getCostOfTransport()[2][1] = Integer.parseInt(this.costOfTransport21.getText());
+        this.transportIssueAlgorithm.setCostOfTransport(0, 0, Integer.parseInt(this.costOfTransport00.getText()));
+        this.transportIssueAlgorithm.setCostOfTransport(0, 1, Integer.parseInt(this.costOfTransport01.getText()));
+        this.transportIssueAlgorithm.setCostOfTransport(1, 0, Integer.parseInt(this.costOfTransport10.getText()));
+        this.transportIssueAlgorithm.setCostOfTransport(1, 1, Integer.parseInt(this.costOfTransport11.getText()));
+        this.transportIssueAlgorithm.setCostOfTransport(2, 0, Integer.parseInt(this.costOfTransport20.getText()));
+        this.transportIssueAlgorithm.setCostOfTransport(2, 1, Integer.parseInt(this.costOfTransport21.getText()));
+
+        this.transportIssueAlgorithm.setBlockedRowIndex(Integer.parseInt(this.blockedRow.getText()));
+        this.transportIssueAlgorithm.setBlockedColIndex(Integer.parseInt(this.blockedCol.getText()));
     }
 
-//    Integer [] unitProfit = transportIssueAlgorithm.calculateUnitProfit(this.recipients,this.suppliers, this.costOfTransport);
-    // TRANSCRIPTION
-    // costOfTransport[0][0] --->  suppliers[0] and recipients[0]
-    // costOfTransport[0][1] --->  suppliers[0] and recipients[1]
-    // ...
-    // costOfTransport[2][1] --> suppliers[2] and recipients[1]
-
-//----------------------------------------------------------------------------------
-
-    /* STEP 1
-         Wyznaczenie jednostkowego zysku z na poszczególnych trasach od dostawców do odbiorców na podstawie cen sprzedaży c, kosztów zakupu kz oraz kosztów jednostkowych transportu kt
-        z = c – kz- kt
-    */
-
-    public Integer[] calculateUnitProfit(Recipient[] rec, Supplier[]  sup){
-        Integer [] profit = new Integer[ rec.length*sup.length];
-        int indexUnit =0;
-
-        for (int indexRec = 0; indexRec < rec.length; indexRec++)
-        {
-            for (int indexSup = 0; indexSup < sup.length; indexSup++){
-                profit[indexUnit] = rec[indexRec].getSellingPrice() - this.suppliers[indexSup].getPurchasePrice() - this.costOfTransport[indexSup][indexRec];
-                indexUnit++;
-            }
-        }
-
-        return profit;
+    public void handleResultButton() {
+        double optimizedProfit = transportIssueAlgorithm.countOptimizedProfit();
+        result.setText(String.valueOf(optimizedProfit));
     }
-
-    //--------------------------------------------------------------------------------------------------
-
 
     
 }
