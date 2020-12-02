@@ -2,6 +2,9 @@ package sample;
 
 import models.Recipient;
 import models.Supplier;
+
+import java.util.Arrays;
+
 import org.apache.commons.math.optimization.GoalType;
 import org.apache.commons.math.optimization.OptimizationException;
 import org.apache.commons.math.optimization.RealPointValuePair;
@@ -10,9 +13,6 @@ import org.apache.commons.math.optimization.linear.LinearObjectiveFunction;
 import org.apache.commons.math.optimization.linear.Relationship;
 import org.apache.commons.math.optimization.linear.SimplexSolver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
 public class TransportIssueAlgorithm {
     private Supplier[]  suppliers = new Supplier[3];
@@ -74,6 +74,7 @@ public class TransportIssueAlgorithm {
         double[] blockedRouteConstraint = new double[6];
         Arrays.fill(blockedRouteConstraint, 0);
         blockedRouteConstraint[blockedRouteIndex] = 1;
+
         LinearObjectiveFunction f = new LinearObjectiveFunction(unitProfit, 0);
         Collection constraints = new ArrayList();
         constraints.add(new LinearConstraint(blockedRouteConstraint, Relationship.EQ, 0));
