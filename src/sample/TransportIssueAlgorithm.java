@@ -3,7 +3,9 @@ package sample;
 import models.Recipient;
 import models.Supplier;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import org.apache.commons.math.optimization.GoalType;
 import org.apache.commons.math.optimization.OptimizationException;

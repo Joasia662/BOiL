@@ -2,6 +2,7 @@
   <library name="sample">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/out/production/BOiL/sample" />
+      <root url="jar://$APPLICATION_HOME_DIR$/lib/commons-math-2.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
