@@ -9,191 +9,208 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="679.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="745.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <AnchorPane layoutY="443.0" prefHeight="269.0" prefWidth="679.0" style="-fx-background-color: #636d77;">
+      <AnchorPane layoutY="442.0" prefHeight="330.0" prefWidth="745.0" style="-fx-background-color: #636d77;">
          <children>
-            <Label layoutX="20.0" layoutY="126.0" prefHeight="17.0" prefWidth="68.0" text="Pośrednik">
+            <Label layoutX="18.0" layoutY="231.0" prefHeight="17.0" prefWidth="68.0" text="Pośrednik">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="92.0" prefHeight="17.0" prefWidth="34.0" text="O2">
+            <Label layoutX="54.0" layoutY="71.0" prefHeight="17.0" prefWidth="34.0" text="O2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="52.0" prefHeight="17.0" prefWidth="34.0" text="O1">
+            <Label layoutX="54.0" layoutY="37.0" prefHeight="17.0" prefWidth="34.0" text="O1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="63.0" layoutY="17.0" prefHeight="17.0" prefWidth="87.0" text="Poprzednicy">
+            <Label layoutX="34.0" layoutY="7.0" prefHeight="17.0" prefWidth="87.0" text="Popyt">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="o1" layoutX="88.0" layoutY="45.0" prefHeight="31.0" prefWidth="73.0">
+            <TextField fx:id="o1_popyt" layoutX="88.0" layoutY="31.0" prefHeight="31.0" prefWidth="73.0">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor></TextField>
-            <TextField fx:id="o2" layoutX="88.0" layoutY="86.0" prefHeight="31.0" prefWidth="73.0" />
-            <TextField fx:id="point" layoutX="88.0" layoutY="128.0" prefHeight="31.0" prefWidth="73.0" />
-            <Label layoutX="255.0" layoutY="17.0" prefHeight="17.0" prefWidth="129.0" text="Ograniczenia Łuków">
+            <TextField fx:id="o2_popyt" layoutX="88.0" layoutY="66.0" prefHeight="31.0" prefWidth="73.0" />
+            <TextField fx:id="point" layoutX="87.0" layoutY="224.0" prefHeight="31.0" prefWidth="73.0" />
+            <Label layoutX="317.0" layoutY="17.0" prefHeight="17.0" prefWidth="129.0" text="Ograniczenia Łuków">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="173.0" mnemonicParsing="false" onAction="#handleBeforeConfirmButton" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź poprzedników" />
-            <TextField fx:id="min" layoutX="303.0" layoutY="74.0" prefHeight="25.0" prefWidth="43.0" />
-            <Label layoutX="312.0" layoutY="54.0" prefHeight="17.0" prefWidth="35.0" text="Min">
+            <Button layoutX="14.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleConfirmNetwork" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź" />
+            <TextField fx:id="min" layoutX="368.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
+            <Label layoutX="377.0" layoutY="43.0" prefHeight="17.0" prefWidth="35.0" text="Min">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="max" layoutX="348.0" layoutY="74.0" prefHeight="25.0" prefWidth="43.0" />
-            <Label layoutX="356.0" layoutY="54.0" prefHeight="17.0" prefWidth="35.0" text="Max">
+            <TextField fx:id="max" layoutX="413.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
+            <Label layoutX="421.0" layoutY="43.0" prefHeight="17.0" prefWidth="35.0" text="Max">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="cb1" layoutX="205.0" layoutY="74.0" prefHeight="25.0" prefWidth="43.0" />
-            <ChoiceBox fx:id="cb2" layoutX="257.0" layoutY="74.0" onDragDone="#handleCb2Click" onMouseClicked="#handleCb2Click" prefHeight="25.0" prefWidth="43.0" />
-            <Button layoutX="236.0" layoutY="114.0" mnemonicParsing="false" onAction="#handleResetBeforeButton" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź ograniczenie" />
-            <Label layoutX="200.0" layoutY="54.0" prefHeight="17.0" prefWidth="53.0" text="Węzeł 1">
+            <ChoiceBox fx:id="cb1" layoutX="270.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
+            <ChoiceBox fx:id="cb2" layoutX="322.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
+            <Button layoutX="306.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleConfirmNode" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź" />
+            <Label layoutX="265.0" layoutY="43.0" prefHeight="17.0" prefWidth="53.0" text="Węzeł 1">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="257.0" layoutY="54.0" prefHeight="17.0" prefWidth="53.0" text="Węzeł 2">
+            <Label layoutX="322.0" layoutY="43.0" prefHeight="17.0" prefWidth="53.0" text="Węzeł 2">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button layoutX="144.0" layoutY="224.0" mnemonicParsing="false" onAction="#handleResultButton" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Reset Danych">
+            <Button layoutX="410.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleResultButton" prefHeight="31.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Reset Danych">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Line endX="464.5" endY="245.0" layoutX="-19.0" layoutY="-3.0" startX="464.50006103515625" startY="16.0" stroke="WHITE" />
-            <Button layoutX="504.0" layoutY="19.0" mnemonicParsing="false" onAction="#handleResultButton" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Oblicz wynik">
+            <Line endX="464.5" endY="313.0" layoutX="82.0" layoutY="-1.0" startX="464.50006103515625" startY="16.0" stroke="WHITE" />
+            <Button layoutX="589.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleResultNetworkButton" prefHeight="38.0" prefWidth="123.0" style="-fx-background-color: #eda678;" text="Oblicz wynik">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <TextField fx:id="result1" layoutX="573.0" layoutY="120.0" prefHeight="106.0" prefWidth="87.0" />
-            <Label layoutX="466.0" layoutY="118.0" prefHeight="17.0" prefWidth="53.0" text="Ścieżka ">
+            <Label layoutX="600.0" layoutY="142.0" prefHeight="17.0" prefWidth="102.0" text="Maksymalny zysk">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="466.0" layoutY="84.0" prefHeight="17.0" prefWidth="102.0" text="Maksymalny zysk">
+            <TextField fx:id="networkResult" layoutX="607.0" layoutY="173.0" prefHeight="31.0" prefWidth="87.0" />
+            <TextField fx:id="cost" layoutX="460.0" layoutY="62.0" prefHeight="25.0" prefWidth="43.0" />
+            <Label layoutX="464.0" layoutY="43.0" prefHeight="17.0" prefWidth="35.0" text="Koszt">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <TextField fx:id="result2" layoutX="573.0" layoutY="77.0" prefHeight="31.0" prefWidth="87.0" />
-            <TextField fx:id="cost" layoutX="394.0" layoutY="74.0" prefHeight="25.0" prefWidth="43.0" />
-            <Label layoutX="393.0" layoutY="54.0" prefHeight="17.0" prefWidth="35.0" text="Koszt">
+            <TextField fx:id="list" layoutX="247.0" layoutY="143.0" prefHeight="129.0" prefWidth="281.0" />
+            <Line endX="464.5" endY="313.0" layoutX="-255.0" layoutY="-1.0" startX="464.50006103515625" startY="16.0" stroke="WHITE" />
+            <Label layoutX="54.0" layoutY="172.0" prefHeight="17.0" prefWidth="34.0" text="D2">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="134.0" prefHeight="17.0" prefWidth="34.0" text="D1">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="d1_podaz" layoutX="87.0" layoutY="130.0" prefHeight="31.0" prefWidth="73.0">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="d2_podaz" layoutX="87.0" layoutY="165.0" prefHeight="31.0" prefWidth="73.0" />
+            <Label layoutX="35.0" layoutY="106.0" prefHeight="17.0" prefWidth="87.0" text="Podaż">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <TextField fx:id="sup0" alignment="CENTER" layoutX="189.0" layoutY="93.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
-      <TextField fx:id="sup1" alignment="CENTER" layoutX="189.0" layoutY="137.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
-      <TextField fx:id="sup2" alignment="CENTER" layoutX="190.0" layoutY="184.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
-      <TextField fx:id="rec0" alignment="CENTER" layoutX="264.0" layoutY="50.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956;  -fx-text-fill: white;" />
-      <TextField fx:id="rec1" alignment="CENTER" layoutX="334.0" layoutY="50.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
-      <Label layoutX="207.0" layoutY="66.0" text="Podaż" textFill="WHITE">
+      <TextField fx:id="sup0" alignment="CENTER" layoutX="240.0" layoutY="93.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
+      <TextField fx:id="sup1" alignment="CENTER" layoutX="240.0" layoutY="137.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
+      <TextField fx:id="sup2" alignment="CENTER" layoutX="241.0" layoutY="184.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
+      <TextField fx:id="rec0" alignment="CENTER" layoutX="315.0" layoutY="50.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956;  -fx-text-fill: white;" />
+      <TextField fx:id="rec1" alignment="CENTER" layoutX="385.0" layoutY="50.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />
+      <Label layoutX="258.0" layoutY="66.0" text="Podaż" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="284.0" layoutY="6.0" text="Popyt" textFill="WHITE">
+      <Label layoutX="366.0" layoutY="6.0" text="Popyt" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="163.0" layoutY="98.0" text="D1" textFill="WHITE">
+      <Label layoutX="214.0" layoutY="98.0" text="D1" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="163.0" layoutY="142.0" text="D2" textFill="WHITE">
+      <Label layoutX="214.0" layoutY="142.0" text="D2" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="163.0" layoutY="189.0" text="D3" textFill="WHITE">
+      <Label layoutX="214.0" layoutY="189.0" text="D3" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="293.0" layoutY="23.0" text="O1" textFill="WHITE">
+      <Label layoutX="344.0" layoutY="23.0" text="O1" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="355.0" layoutY="23.0" text="O2" textFill="WHITE">
+      <Label layoutX="406.0" layoutY="23.0" text="O2" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="costOfTransport00" alignment="CENTER" layoutX="264.0" layoutY="93.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
+      <TextField fx:id="costOfTransport00" alignment="CENTER" layoutX="315.0" layoutY="93.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <TextField fx:id="costOfTransport01" alignment="CENTER" layoutX="334.0" layoutY="93.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
+      <TextField fx:id="costOfTransport01" alignment="CENTER" layoutX="385.0" layoutY="93.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <TextField fx:id="costOfTransport10" alignment="CENTER" layoutX="264.0" layoutY="137.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
+      <TextField fx:id="costOfTransport10" alignment="CENTER" layoutX="315.0" layoutY="137.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <TextField fx:id="costOfTransport11" alignment="CENTER" layoutX="334.0" layoutY="137.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
+      <TextField fx:id="costOfTransport11" alignment="CENTER" layoutX="385.0" layoutY="137.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <TextField fx:id="costOfTransport20" alignment="CENTER" layoutX="264.0" layoutY="184.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
+      <TextField fx:id="costOfTransport20" alignment="CENTER" layoutX="315.0" layoutY="184.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <TextField fx:id="costOfTransport21" alignment="CENTER" layoutX="334.0" layoutY="184.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
+      <TextField fx:id="costOfTransport21" alignment="CENTER" layoutX="385.0" layoutY="184.0" prefHeight="31.0" prefWidth="66.0" style="-fx-background-color: #777f88; -fx-text-fill: white;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></TextField>
-      <Label layoutX="404.0" layoutY="55.0" text="Cena zakupu" textFill="WHITE">
+      <Label layoutX="455.0" layoutY="55.0" text="Cena zakupu" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="148.0" layoutY="237.0" text="Cena sprzedaży" textFill="WHITE">
+      <Label layoutX="199.0" layoutY="237.0" text="Cena sprzedaży" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="purchasePrice0" alignment="CENTER" layoutX="406.0" layoutY="93.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #33cc33; -fx-background-color: #3d4956; -fx-text-fill: white;" />
-      <TextField fx:id="purchasePrice1" alignment="CENTER" layoutX="406.0" layoutY="137.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #33cc33; -fx-background-color: #3d4956;-fx-text-fill: white;" />
-      <TextField fx:id="purchasePrice2" alignment="CENTER" layoutX="406.0" layoutY="184.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #33cc33; -fx-background-color: #3d4956;-fx-text-fill: white;" />
-      <TextField fx:id="sellingPrice0" alignment="CENTER" layoutX="263.0" layoutY="231.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #ff0000; -fx-background-color: #3d4956;-fx-text-fill: white;" />
-      <TextField fx:id="sellingPrice1" alignment="CENTER" layoutX="334.0" layoutY="231.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #ff0000; -fx-background-color: #3d4956;-fx-text-fill: white;" />
-      <Button layoutX="440.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: #eda678;" text="Zatwierdź dane" />
-      <Label layoutX="114.0" layoutY="287.0" text="Blokowana trasa:" textFill="WHITE">
+      <TextField fx:id="purchasePrice0" alignment="CENTER" layoutX="457.0" layoutY="93.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #33cc33; -fx-background-color: #3d4956; -fx-text-fill: white;" />
+      <TextField fx:id="purchasePrice1" alignment="CENTER" layoutX="457.0" layoutY="137.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #33cc33; -fx-background-color: #3d4956;-fx-text-fill: white;" />
+      <TextField fx:id="purchasePrice2" alignment="CENTER" layoutX="457.0" layoutY="184.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #33cc33; -fx-background-color: #3d4956;-fx-text-fill: white;" />
+      <TextField fx:id="sellingPrice0" alignment="CENTER" layoutX="314.0" layoutY="231.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #ff0000; -fx-background-color: #3d4956;-fx-text-fill: white;" />
+      <TextField fx:id="sellingPrice1" alignment="CENTER" layoutX="385.0" layoutY="231.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: #ff0000; -fx-background-color: #3d4956;-fx-text-fill: white;" />
+      <Button layoutX="491.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleConfirmButton" style="-fx-background-color: #eda678;" text="Zatwierdź dane" />
+      <Label layoutX="165.0" layoutY="287.0" text="Blokowana trasa:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="146.0" layoutY="308.0" text="Nr wiersza:" textFill="WHITE">
+      <Label layoutX="197.0" layoutY="308.0" text="Nr wiersza:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label layoutX="294.0" layoutY="308.0" text="Nr kolumny:" textFill="WHITE">
+      <Label layoutX="345.0" layoutY="308.0" text="Nr kolumny:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="blockedRow" layoutX="225.0" layoutY="303.0" prefHeight="31.0" prefWidth="53.0" />
-      <TextField fx:id="blockedCol" layoutX="380.0" layoutY="303.0" prefHeight="31.0" prefWidth="53.0" />
-      <Button layoutX="284.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleResultButton" prefHeight="25.0" prefWidth="112.0" scaleShape="false" style="-fx-background-color: #eda678;" text="Oblicz zysk" AnchorPane.bottomAnchor="321.0" AnchorPane.leftAnchor="284.0" AnchorPane.rightAnchor="283.0" AnchorPane.topAnchor="359.0">
+      <TextField fx:id="blockedRow" layoutX="276.0" layoutY="303.0" prefHeight="31.0" prefWidth="53.0" />
+      <TextField fx:id="blockedCol" layoutX="431.0" layoutY="303.0" prefHeight="31.0" prefWidth="53.0" />
+      <Button layoutX="293.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleResultButton" prefHeight="31.0" prefWidth="123.0" scaleShape="false" style="-fx-background-color: #eda678;" text="Oblicz zysk" AnchorPane.bottomAnchor="382.0" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="359.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Label layoutX="246.0" layoutY="405.0" text="Maksymalny zysk:" textFill="WHITE">
+      <Label layoutX="297.0" layoutY="405.0" text="Maksymalny zysk:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <TextField fx:id="result" disable="true" layoutX="368.0" layoutY="398.0" prefHeight="31.0" prefWidth="73.0" />
+      <TextField fx:id="result" disable="true" layoutX="419.0" layoutY="398.0" prefHeight="31.0" prefWidth="73.0" />
    </children>
 </AnchorPane>

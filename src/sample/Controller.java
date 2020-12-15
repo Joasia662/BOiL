@@ -3,11 +3,9 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import models.Recipient;
-import models.Supplier;
+import models.Nodes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,9 +38,13 @@ public class Controller{
 
     @FXML private TextField result;
 
-    @FXML private TextField o1;
-    @FXML private TextField o2;
+    @FXML private TextField o1_popyt;
+    @FXML private TextField o2_popyt;
+    @FXML private TextField d1_podaz;
+    @FXML private TextField d2_podaz;
+    @FXML private TextField d3_podaz;
     @FXML private TextField point;
+
 
     @FXML private ChoiceBox cb1;
     @FXML private ChoiceBox cb2;
@@ -50,89 +52,97 @@ public class Controller{
     @FXML private TextField min;
     @FXML private TextField max;
     @FXML private TextField cost;
+    @FXML private TextField networkResult;
 
 
     private TransportIssueAlgorithm transportIssueAlgorithm = new TransportIssueAlgorithm();
-    String[][] paths = new String[3][5];
+    private TransportNetworkFlow transportNetworkFlow = new TransportNetworkFlow();
+    private Nodes node = new Nodes();
 
-    public void handleCb2Click(){
-        String checkedValue = this.cb1.getValue().toString();
+
+    public void handleConfirmNetwork(){
         ObservableList<String> db= FXCollections.observableArrayList();
-        switch(checkedValue) {
+        db.add("O1");
+        db.add("O2");
+        db.add("D1");
+        db.add("D2");
+        db.add("Point");
+
+        this.transportNetworkFlow.getSuppliers()[0].setSupply(Integer.parseInt(this.o1_popyt.getText()));
+        this.transportNetworkFlow.getSuppliers()[1].setSupply(Integer.parseInt(this.o2_popyt.getText()));
+
+        this.transportNetworkFlow.getRecipients()[0].setDemand(Integer.parseInt(this.d1_podaz.getText()));
+        this.transportNetworkFlow.getRecipients()[1].setDemand(Integer.parseInt(this.d1_podaz.getText()));
+
+        this.transportNetworkFlow.setPoint(Integer.parseInt(this.point.getText()));
+
+        this.cb1.setItems(db);
+        this.cb2.setItems(db);
+
+    }
+    public void handleConfirmNode() {
+        String value1 = this.cb1.getValue().toString();
+        String value2 = this.cb2.getValue().toString();
+
+        int id_first=0;
+        //sup1=0;   sub2=1 ;    d1=3;   d2=4    point=5
+
+        switch(value1){
             case "O1":
-                for(int i=0;i<5;i++){
-                    if(paths[0][i] !=null && paths[0][i]!="") {
-                        db.add(paths[0][i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+                id_first=0;
                 break;
-
             case "O2":
-                for(int i=0;i<5;i++){
-                    if(paths[1][i] !=null && paths[1][i]!="") {
-                        db.add(paths[1][i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+                id_first=1;
                 break;
-
-            case "punkt pośredniczący":
-                for(int i=0;i<5;i++){
-                    if(paths[2][i] !=null && paths[2][i]!="") {
-                        db.add(paths[2][i]);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
+            case "D1":
+                id_first=3;
+                break;
+            case "D2":
+                id_first=4;
+                break;
+            case "Point":
+                id_first=5;
                 break;
         }
-        this.cb2.setItems(db);
-    }
-    public void handleResetBeforeButton(){
+
+        int id_second=0;
+        switch(value2){
+            case "O1":
+                id_second=0;
+                break;
+            case "O2":
+                id_second=1;
+                break;
+            case "D1":
+                id_second=3;
+                break;
+            case "D2":
+                id_second=4;
+                break;
+            case "Point":
+                id_second=5;
+                break;
+        }
+
+        Nodes node = new Nodes();
+        node.setFirst(id_first);
+        node.setIdOfSecond(id_second);
+        node.setCost(Integer.parseInt(this.cost.getText()));
+        node.setMin(Integer.parseInt(this.min.getText()));
+        node.setMax(Integer.parseInt(this.max.getText()));
+        this.transportNetworkFlow.addNode(node);
+
         this.min.setText("");
         this.max.setText("");
-            }
-
-    public void handleBeforeConfirmButton() {
-        ObservableList<String> db= FXCollections.observableArrayList("O1", "O2", "punkt pośredniczący");
-        this.cb1.setItems(db);
-
-        String before_o1 = this.o1.getText();
-        String before_o2 = this.o2.getText();
-        String before_point = this.point.getText();
-
-        List<String> o1List = Arrays.asList(before_o1.split(","));
-        List<String> o2List = Arrays.asList(before_o2.split(","));
-        List<String> pointList = Arrays.asList(before_point.split(","));
-
-        Integer count =0;
-        for(String before : o1List){
-            paths[0][count]=before;
-            count++;
-        }
-        count =0;
-        for(String before : o2List){
-            paths[1][count]=before;
-            count++;
-        }
-
-        count =0;
-        for(String before : pointList){
-            paths[2][count]=before;
-            count++;
-        }
+        this.cost.setText("");
     }
 
 
+public void handleResultNetworkButton() {
+      double result = this.transportNetworkFlow.getCost();
+      this.networkResult.setText(Double.toString(result));
+
+}
 
     public void handleConfirmButton() {
         this.transportIssueAlgorithm.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
