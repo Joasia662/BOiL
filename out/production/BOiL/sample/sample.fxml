@@ -58,7 +58,7 @@
                </font>
             </Label>
             <ChoiceBox fx:id="cb1" layoutX="270.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
-            <ChoiceBox fx:id="cb2" layoutX="322.0" layoutY="63.0"  prefHeight="25.0" prefWidth="43.0" />
+            <ChoiceBox fx:id="cb2" layoutX="322.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
             <Button layoutX="306.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleConfirmNode" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź" />
             <Label layoutX="265.0" layoutY="43.0" prefHeight="17.0" prefWidth="53.0" text="Węzeł 1">
                <font>

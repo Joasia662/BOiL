@@ -19,7 +19,7 @@ import java.util.List;
 public class TransportNetworkFlow {
 
     private Supplier[]  suppliers = new Supplier[2];
-    private Recipient[] recipients = new Recipient[2];
+    private Recipient[] recipients = new Recipient[3];
     private Integer point;
 
     private List<Nodes> nodes = new ArrayList<Nodes>();
@@ -32,99 +32,46 @@ public class TransportNetworkFlow {
             this.recipients[i] = new Recipient();
         }
     }
-        public double getCost(){
+
+        public double getCost(TransportIssueAlgorithm transform){
 
         /*Nodes:
-            id_first  //sup1=0;   sub2=1 ;    d1=2;   d2=3    point=4
-            id_Second  //sup1=0;   sub2=1 ;    d1=2;   d2=3   point=4
+            id_first  //sup1=0;   sub2=1 ;    r1=2;   r2=3    r3=4
+            id_Second  //sup1=0;   sub2=1 ;    r1=2;  r2=3    r3= 4
              min;
              max
              cost;
         */
 
-        LinearObjectiveFunction f = new LinearObjectiveFunction(new double [] {0,0,0,0,0,0,0,0,0,0},0);
+            double[] profit= transform.calculateUnitProfit(transform.getRecipients(),transform.getSuppliers(),transform.getCostOfTransport());
+            LinearObjectiveFunction f = new LinearObjectiveFunction(profit, 0);
 
+            Collection constrains = new ArrayList();
+            double[] cos = getCelanCstr(this.nodes);
 
+            for(int index=0; index <nodes.size();index++){
+                int lookedId = nodes.get(index).getIdOfFirst();
+                for (Nodes node:nodes
+                ) {
+                    if(node.getIdOfFirst()==lookedId){
+                        cos[node.getIdOfSecond()]=1;
+                    }
 
-
-
-
-        Collection constrains = new ArrayList();
-
-            for (Nodes node: nodes) {
-
-                Supplier sup1=null;
-                Recipient rec1 = null;
-                int point1;
-                switch (node.getIdOfFirst())
-                {
-                    case 0 :
-                        sup1=this.suppliers[0];
-                        break;
-                    case 1:
-                        sup1=this.suppliers[1];
-                        break;
-                    case 2:
-                        rec1=this.recipients[0];
-                        break;
-
-                    case 3:
-                        rec1=this.recipients[1];
-                        break;
-
-                    case 4:
-                        point1=this.point;
-                        break;
-
+                    if(node.getIdOfSecond()==lookedId)
+                    {
+                        cos[node.getIdOfFirst()]=-1;
+                    }
                 }
-
-                Supplier sup2=null;
-                Recipient rec2 = null;
-                int point2;
-
-                switch (node.getIdOfSecond())
-                {
-                    case 0 :
-                        sup2=this.suppliers[0];
-                        break;
-                    case 1:
-                        sup2=this.suppliers[1];
-                        break;
-                    case 2:
-                        rec2=this.recipients[0];
-                        break;
-
-                    case 3:
-                        rec2=this.recipients[1];
-                        break;
-
-                    case 4:
-                        point2=this.point;
-                        break;
-
-                }
-
-
-
-                if (node.getMin()!=null)
-                {
-                    constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, node.getMin()));
-                }
-                if (node.getMax()!=NULL)
-                {
-                    constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.GEQ, node.getMin()));
-                }
-
-                constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, node.getMin()));
+             if (index <2){
+                 constrains.add(new LinearConstraint(cos, Relationship.LEQ, this.suppliers[index].getSupply()));
+             }
+                else if (index >2){
+                 constrains.add(new LinearConstraint(cos, Relationship.LEQ, this.recipients[index-2].getDemand()));
+              }
 
             }
 
-
-        constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
-        constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
-        constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
-        constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
-        constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
+            
 
         RealPointValuePair solution = null;
         try {
@@ -133,8 +80,43 @@ public class TransportNetworkFlow {
             e.printStackTrace();
         }
         return solution.getValue();
+
+        /*EXAMPLE FROM TASK
+
+        * LinearObjectiveFunction funkcjaCelu = new LinearObjectiveFunction(new double [] {2,6,2,5,3,5,4,1,8,4},0);
+
+           constrains.add(new LinearConstraint(new double[]  {-1,0,0,1,1,0,0,0,0,0}, Relationship.LEQ, 250));
+           constrains.add(new LinearConstraint(new double[]  {1,1,1,0,0,0,0,0,0,0}, Relationship.LEQ, 300);
+
+           constrains.add(new LinearConstraint(new double[]  {0,0,0,0,1,1,0,0,-1,0}, Relationship.GEQ, 120));
+           constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,1,0,1,-1}, Relationship.GEQ, 250));
+           constrains.add(new LinearConstraint(new double[]  {0,0,1,0,0,0,0,1,0,1}, Relationship.GEQ, 100));
+
+           constrains.add(new LinearConstraint(new double[]  {0,1,0,1,0,-1,-1,-1,0,0}, Relationship.EQ, 0));
+
+          RealPointValuePair solution = null;
+            try {
+                solution = new SimplexSolver().optimize(f,constrains,GoalType.MINIMIZE,true);
+            } catch (OptimizationException e) {
+                 e.printStackTrace();
+            }
+       return solution.getValue();
+
+        * */
+
+
+
+
+
+    }
+public double[]  getCelanCstr(List<Nodes> nodes){
+    double[] costr = new double [nodes.size()];
+        for (int i=0; i <nodes.size();i++) {
+        costr[i]=0;
     }
 
+        return costr;
+}
 
     public Supplier[] getSuppliers() {
         return suppliers;
