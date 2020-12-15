@@ -35,19 +35,77 @@ public class TransportNetworkFlow {
         public double getCost(){
 
         /*Nodes:
-            id_first  //sup1=0;   sub2=1 ;    d1=3;   d2=4    point=5
-            id_Second  //sup1=0;   sub2=1 ;    d1=3;   d2=4    point=5
+            id_first  //sup1=0;   sub2=1 ;    d1=2;   d2=3    point=4
+            id_Second  //sup1=0;   sub2=1 ;    d1=2;   d2=3   point=4
              min;
              max
              cost;
         */
 
-
         LinearObjectiveFunction f = new LinearObjectiveFunction(new double [] {0,0,0,0,0,0,0,0,0,0},0);
+
+
+
+
+
 
         Collection constrains = new ArrayList();
 
             for (Nodes node: nodes) {
+
+                Supplier sup1=null;
+                Recipient rec1 = null;
+                int point1;
+                switch (node.getIdOfFirst())
+                {
+                    case 0 :
+                        sup1=this.suppliers[0];
+                        break;
+                    case 1:
+                        sup1=this.suppliers[1];
+                        break;
+                    case 2:
+                        rec1=this.recipients[0];
+                        break;
+
+                    case 3:
+                        rec1=this.recipients[1];
+                        break;
+
+                    case 4:
+                        point1=this.point;
+                        break;
+
+                }
+
+                Supplier sup2=null;
+                Recipient rec2 = null;
+                int point2;
+
+                switch (node.getIdOfSecond())
+                {
+                    case 0 :
+                        sup2=this.suppliers[0];
+                        break;
+                    case 1:
+                        sup2=this.suppliers[1];
+                        break;
+                    case 2:
+                        rec2=this.recipients[0];
+                        break;
+
+                    case 3:
+                        rec2=this.recipients[1];
+                        break;
+
+                    case 4:
+                        point2=this.point;
+                        break;
+
+                }
+
+
+
                 if (node.getMin()!=null)
                 {
                     constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, node.getMin()));
@@ -61,7 +119,7 @@ public class TransportNetworkFlow {
 
             }
 
-            
+
         constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
         constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
         constrains.add(new LinearConstraint(new double[]  {0,0,0,0,0,0,0,0,0}, Relationship.LEQ, 250));
@@ -76,6 +134,7 @@ public class TransportNetworkFlow {
         }
         return solution.getValue();
     }
+
 
     public Supplier[] getSuppliers() {
         return suppliers;
