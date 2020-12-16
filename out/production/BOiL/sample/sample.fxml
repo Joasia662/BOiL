@@ -13,38 +13,11 @@
    <children>
       <AnchorPane layoutY="442.0" prefHeight="330.0" prefWidth="745.0" style="-fx-background-color: #636d77;">
          <children>
-            <Label layoutX="18.0" layoutY="231.0" prefHeight="17.0" prefWidth="68.0" text="Pośrednik">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="54.0" layoutY="71.0" prefHeight="17.0" prefWidth="34.0" text="O2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="54.0" layoutY="37.0" prefHeight="17.0" prefWidth="34.0" text="O1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="34.0" layoutY="7.0" prefHeight="17.0" prefWidth="87.0" text="Popyt">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="o1_popyt" layoutX="88.0" layoutY="31.0" prefHeight="31.0" prefWidth="73.0">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor></TextField>
-            <TextField fx:id="o2_popyt" layoutX="88.0" layoutY="66.0" prefHeight="31.0" prefWidth="73.0" />
-            <TextField fx:id="point" layoutX="87.0" layoutY="224.0" prefHeight="31.0" prefWidth="73.0" />
             <Label layoutX="317.0" layoutY="17.0" prefHeight="17.0" prefWidth="129.0" text="Ograniczenia Łuków">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button layoutX="14.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleConfirmNetwork" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź" />
             <TextField fx:id="min" layoutX="368.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
             <Label layoutX="377.0" layoutY="43.0" prefHeight="17.0" prefWidth="35.0" text="Min">
                <font>
@@ -59,7 +32,7 @@
             </Label>
             <ChoiceBox fx:id="cb1" layoutX="270.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
             <ChoiceBox fx:id="cb2" layoutX="322.0" layoutY="63.0" prefHeight="25.0" prefWidth="43.0" />
-            <Button layoutX="306.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleConfirmNode" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź" />
+            <Button layoutX="282.0" layoutY="102.0" mnemonicParsing="false" onAction="#handleConfirmNode" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #eda678;" text="Zatwierdź" />
             <Label layoutX="265.0" layoutY="43.0" prefHeight="17.0" prefWidth="53.0" text="Węzeł 1">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -87,35 +60,7 @@
                </font>
             </Label>
             <TextField fx:id="networkResult" layoutX="607.0" layoutY="173.0" prefHeight="31.0" prefWidth="87.0" />
-            <TextField fx:id="cost" layoutX="460.0" layoutY="62.0" prefHeight="25.0" prefWidth="43.0" />
-            <Label layoutX="464.0" layoutY="43.0" prefHeight="17.0" prefWidth="35.0" text="Koszt">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
             <TextField fx:id="list" layoutX="247.0" layoutY="143.0" prefHeight="129.0" prefWidth="281.0" />
-            <Line endX="464.5" endY="313.0" layoutX="-255.0" layoutY="-1.0" startX="464.50006103515625" startY="16.0" stroke="WHITE" />
-            <Label layoutX="54.0" layoutY="172.0" prefHeight="17.0" prefWidth="34.0" text="D2">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="54.0" layoutY="134.0" prefHeight="17.0" prefWidth="34.0" text="D1">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <TextField fx:id="d1_podaz" layoutX="87.0" layoutY="130.0" prefHeight="31.0" prefWidth="73.0">
-               <cursor>
-                  <Cursor fx:constant="TEXT" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="d2_podaz" layoutX="87.0" layoutY="165.0" prefHeight="31.0" prefWidth="73.0" />
-            <Label layoutX="35.0" layoutY="106.0" prefHeight="17.0" prefWidth="87.0" text="Podaż">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <TextField fx:id="sup0" alignment="CENTER" layoutX="240.0" layoutY="93.0" prefHeight="31.0" prefWidth="68.0" style="-fx-border-color: #0066ff; -fx-background-color: #3D4956; -fx-text-fill: white;" />

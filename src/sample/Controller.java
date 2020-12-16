@@ -38,20 +38,11 @@ public class Controller{
 
     @FXML private TextField result;
 
-    @FXML private TextField o1_popyt;
-    @FXML private TextField o2_popyt;
-    @FXML private TextField d1_podaz;
-    @FXML private TextField d2_podaz;
-    @FXML private TextField d3_podaz;
-    @FXML private TextField point;
-
-
     @FXML private ChoiceBox cb1;
     @FXML private ChoiceBox cb2;
 
     @FXML private TextField min;
     @FXML private TextField max;
-    @FXML private TextField cost;
     @FXML private TextField networkResult;
 
 
@@ -59,27 +50,6 @@ public class Controller{
     private TransportNetworkFlow transportNetworkFlow = new TransportNetworkFlow();
     private Nodes node = new Nodes();
 
-
-    public void handleConfirmNetwork(){
-        ObservableList<String> db= FXCollections.observableArrayList();
-        db.add("O1");
-        db.add("O2");
-        db.add("D1");
-        db.add("D2");
-        db.add("Point");
-
-        this.transportNetworkFlow.getSuppliers()[0].setSupply(Integer.parseInt(this.o1_popyt.getText()));
-        this.transportNetworkFlow.getSuppliers()[1].setSupply(Integer.parseInt(this.o2_popyt.getText()));
-
-        this.transportNetworkFlow.getRecipients()[0].setDemand(Integer.parseInt(this.d1_podaz.getText()));
-        this.transportNetworkFlow.getRecipients()[1].setDemand(Integer.parseInt(this.d1_podaz.getText()));
-
-        this.transportNetworkFlow.setPoint(Integer.parseInt(this.point.getText()));
-
-        this.cb1.setItems(db);
-        this.cb2.setItems(db);
-
-    }
     public void handleConfirmNode() {
         String value1 = this.cb1.getValue().toString();
         String value2 = this.cb2.getValue().toString();
@@ -127,24 +97,32 @@ public class Controller{
         Nodes node = new Nodes();
         node.setFirst(id_first);
         node.setIdOfSecond(id_second);
-        node.setCost(Integer.parseInt(this.cost.getText()));
         node.setMin(Integer.parseInt(this.min.getText()));
         node.setMax(Integer.parseInt(this.max.getText()));
         this.transportNetworkFlow.addNode(node);
 
         this.min.setText("");
         this.max.setText("");
-        this.cost.setText("");
     }
 
 
 public void handleResultNetworkButton() {
-      double result = this.transportNetworkFlow.getCost();
+      double result = this.transportNetworkFlow.getCost(transportIssueAlgorithm);
       this.networkResult.setText(Double.toString(result));
 
 }
 
     public void handleConfirmButton() {
+
+        ObservableList<String> db= FXCollections.observableArrayList();
+        db.add("O1");
+        db.add("O2");
+        db.add("D1");
+        db.add("D2");
+        db.add("D3");
+        this.cb1.setItems(db);
+        this.cb2.setItems(db);
+
         this.transportIssueAlgorithm.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
         this.transportIssueAlgorithm.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
         this.transportIssueAlgorithm.getSuppliers()[0].setPurchasePrice(Integer.parseInt(this.purchasePrice0.getText()));
@@ -164,6 +142,20 @@ public void handleResultNetworkButton() {
         this.transportIssueAlgorithm.setCostOfTransport(1, 1, Integer.parseInt(this.costOfTransport11.getText()));
         this.transportIssueAlgorithm.setCostOfTransport(2, 0, Integer.parseInt(this.costOfTransport20.getText()));
         this.transportIssueAlgorithm.setCostOfTransport(2, 1, Integer.parseInt(this.costOfTransport21.getText()));
+
+        this.transportNetworkFlow.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
+        this.transportNetworkFlow.getSuppliers()[0].setSupply(Integer.parseInt(this.sup0.getText()));
+        this.transportNetworkFlow.getSuppliers()[0].setPurchasePrice(Integer.parseInt(this.purchasePrice0.getText()));
+        this.transportNetworkFlow.getSuppliers()[1].setSupply(Integer.parseInt(this.sup1.getText()));
+        this.transportNetworkFlow.getSuppliers()[1].setPurchasePrice(Integer.parseInt(this.purchasePrice1.getText()));
+        this.transportNetworkFlow.getSuppliers()[2].setSupply(Integer.parseInt(this.sup2.getText()));
+        this.transportNetworkFlow.getSuppliers()[2].setPurchasePrice(Integer.parseInt(this.purchasePrice2.getText()));
+
+        this.transportNetworkFlow.getRecipients()[0].setDemand(Integer.parseInt(this.rec0.getText()));
+        this.transportNetworkFlow.getRecipients()[0].setSellingPrice(Integer.parseInt(this.sellingPrice0.getText()));
+        this.transportNetworkFlow.getRecipients()[1].setDemand(Integer.parseInt(this.rec1.getText()));
+        this.transportNetworkFlow.getRecipients()[1].setSellingPrice(Integer.parseInt(this.sellingPrice1.getText()));
+
 
         this.transportIssueAlgorithm.setBlockedRowIndex(Integer.parseInt(this.blockedRow.getText()));
         this.transportIssueAlgorithm.setBlockedColIndex(Integer.parseInt(this.blockedCol.getText()));
